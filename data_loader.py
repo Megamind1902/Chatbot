@@ -3,7 +3,7 @@ import pandas as pd
 from typing import Dict, Any, Optional
 
 DEFAULT_CSV_PATHS = [
-    "/mnt/data/Analytics_loan_collection_dataset.csv",  # uploaded path
+    "Analytics_loan_collection_dataset.csv",  # uploaded path
 ]
 
 def _read_first_existing(paths):
