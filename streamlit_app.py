@@ -9,14 +9,22 @@ st.set_page_config(page_title="Loan Collection Chatbot", page_icon="💬")
 
 st.title("💬 Loan Collection Chatbot")
 
-customer_id = st.number_input("Enter CustomerID:", min_value=1, step=1, value=1001)
-profile = load_customer_profile(customer_id)
-persona_key = classify_persona(profile)
-st.write(f"**Detected Persona:** {persona_key} ({PERSONAS[persona_key].tone})")
+# Input as text (string) instead of number
+customer_id = st.text_input("Enter CustomerID (e.g., CUST0001):", "CUST0001")
 
+# Load profile (string-safe lookup inside data_loader)
+profile = load_customer_profile(customer_id)
+
+# Classify persona
+persona_key = classify_persona(profile)
+persona = PERSONAS[persona_key]
+st.write(f"**Detected Persona:** {persona_key} ({persona.tone})")
+
+# Chat history
 if "history" not in st.session_state:
     st.session_state.history = []
 
+# User input
 user_input = st.text_input("You:", "")
 
 if user_input:
@@ -28,9 +36,11 @@ if user_input:
         date=(datetime.datetime.now() + datetime.timedelta(days=3)).strftime("%Y-%m-%d")
     )
     nba = recommend_next_action(persona_key, profile, intent)
+
     st.session_state.history.append(("You", user_input))
     st.session_state.history.append(("Bot", reply + f"\n\n👉 Next Best Action: {nba}"))
 
+# Show chat history
 for speaker, msg in st.session_state.history:
     if speaker == "You":
         st.markdown(f"**🧑 You:** {msg}")
