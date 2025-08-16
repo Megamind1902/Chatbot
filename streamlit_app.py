@@ -8,6 +8,19 @@ import datetime
 st.set_page_config(page_title="Loan Collection Chatbot", page_icon="💬")
 
 st.title("💬 Loan Collection Chatbot")
+st.subheader("📌 Available Commands")
+st.markdown("""
+- **👋 Greeting** → say `hi`, `hello`, `good morning`
+- **📅 Ask Due Date** → ask `when is my payment due?`, `deadline?`
+- **💰 Ask Amount** → ask `how much do I owe?`, `balance`
+- **🤝 Promise to Pay** → say `I will pay on Friday`, `promise to pay tomorrow`
+- **⏳ Request Extension** → say `I need extra time`, `can I get an extension?`
+- **⚠️ Report Hardship** → say `I lost my job`, `financial issue`, `medical emergency`
+- **❗ Raise Dispute** → say `this is wrong`, `not my loan`, `error`
+- **🧑 Connect to Agent** → say `I want to talk to an agent`, `call me`
+- **👋 Goodbye** → say `bye`, `thanks`, `see you`
+""")
+
 
 # Input as text (string) instead of number
 customer_id = st.text_input("Enter CustomerID (e.g., CUST0001):", "CUST0001")
@@ -46,3 +59,4 @@ for speaker, msg in st.session_state.history:
         st.markdown(f"**🧑 You:** {msg}")
     else:
         st.markdown(f"**🤖 Bot:** {msg}")
+
