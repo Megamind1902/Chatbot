@@ -22,7 +22,9 @@ def load_customer_profile(customer_id: Optional[int]) -> Dict[str, Any]:
     """
     df = _read_first_existing(DEFAULT_CSV_PATHS)
     if df is not None and customer_id is not None and "CustomerID" in df.columns:
-        row = df[df["CustomerID"].astype(str) == str(customer_id)]
+        df["CustomerID"] = df["CustomerID"].astype(str).str.strip().str.upper()
+        cust_id = str(customer_id).strip().upper()
+        row = df[df["CustomerID"] == cust_id]
         if not row.empty:
             return row.iloc[0].to_dict()
 
