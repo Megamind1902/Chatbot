@@ -7,27 +7,27 @@ class Persona:
     tone: str
     style_notes: str
 
-# Persona library
+# Persona library with fixed tones
 PERSONAS: Dict[str, Persona] = {
     "cooperative": Persona(
         name="cooperative",
-        tone="empathetic, appreciative, solution-focused",
-        style_notes="Use warm and respectful language. Offer assistance and options."
+        tone="empathetic",
+        style_notes="Use warm, polite language and acknowledge customer efforts."
     ),
     "evasive": Persona(
         name="evasive",
-        tone="concise, firm, accountability-focused",
-        style_notes="Keep messages short. Ask for specific confirmations and timelines."
+        tone="assertive",
+        style_notes="Be concise, firm, and focus on accountability and specific timelines."
     ),
     "aggressive": Persona(
         name="aggressive",
-        tone="calm, de-escalating, professional",
-        style_notes="Acknowledge concerns; avoid confrontational language; present options clearly."
+        tone="empathetic",
+        style_notes="Stay calm and professional, acknowledge frustration, de-escalate the situation."
     ),
     "confused": Persona(
         name="confused",
-        tone="patient, clear, step-by-step",
-        style_notes="Explain terms simply; restate key info; offer to repeat or summarize."
+        tone="informative",
+        style_notes="Be patient, explain things step-by-step, simplify terms."
     ),
 }
 
