@@ -66,6 +66,6 @@ def run_cli(customer_id: int | None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Persona-based Loan Chatbot (CLI)")
-    parser.add_argument("--customer-id", type=int, default=None, help="CustomerID to load from CSV")
+    parser.add_argument("--customer-id", type=str, default=None, help="CustomerID to load from CSV")
     args = parser.parse_args()
     run_cli(args.customer_id)
